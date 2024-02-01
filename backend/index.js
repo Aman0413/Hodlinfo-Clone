@@ -7,9 +7,14 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 5000;
 
+let origin =
+  process.env.NODE_ENV == "production"
+    ? process.env.CLIENT_URL
+    : "http://localhost:5174";
+
 app.use(
   cors({
-    origin: "http://localhost:5174",
+    origin: origin,
     credentials: true,
   })
 );
